@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>Update Berita Lamaran</title>
+        <style>
+            h4 {
+                color: blue;
+            }
+            h3 {
+                color: purple;
+            }
+            /* Memberikan highlight sedikit agar perubahan terlihat jelas */
+            span {
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <h4>Ini berita pertama saya, jurnalis <span id="wartawan">Wawan Irawan</span></h4>
+        <br>
+        <h3>Informasi Lamaran</h3> <br>
+        <p>
+            <span id="pria1">ElRumi</span> dan 
+            <span id="wanita">Syifa Hadju</span> menggelar lamaran hari ini, 
+            <span id="waktu">Rabu, 21 Januari 2026 di Jakarta</span>. 
+            Acara bahagia itu dihadiri oleh seluruh keluarga besar 
+            <span id="pria2">ElRumi</span> yang semuanya kompak memakai baju warna kuning.
+        </p>
+        <p> 
+            <span id="ayah">Ayah</span> dan 
+            <span id="ibu">Ibu</span> mendampingi 
+            <span id="pria3">ElRumi</span> dalam acara lamaran keluarga ini. 
+            Momen lamaran digelar di 
+            <span id="tempat">Hutan Kota Plataran Jakarta Pusat</span>
+        </p>
+
+        <script>
+            // Fungsi ini akan berjalan otomatis saat halaman selesai dimuat
+            window.onload = function() {
+                // 1. Mengambil input dari user melalui pop-up prompt
+                let namaPria = prompt("Ketik nama pengantin pria:", "ElRumi");
+                let namaWanita = prompt("Ketik nama pengantin wanita:", "Syifa Hadju");
+                let namaAyah = prompt("Ketik nama ayah:", "Ayah");
+                let namaIbu = prompt("Ketik nama ibu:", "Ibu");
+                let namaTempat = prompt("Ketik nama tempat acara:", "Hutan Kota Plataran Jakarta Pusat");
+                let tglAcara = prompt("Ketik hari dan tanggal acara:", "Rabu, 21 Januari 2026 di Jakarta");
+
+                // 2. Mengganti teks di HTML dengan input dari user
+                // Kita gunakan ID yang sudah dibuat di atas
+                
+                if (namaPria) {
+                    document.getElementById("pria1").innerText = namaPria;
+                    document.getElementById("pria2").innerText = namaPria;
+                    document.getElementById("pria3").innerText = namaPria;
+                }
+                if (namaWanita) document.getElementById("wanita").innerText = namaWanita;
+                if (namaAyah) document.getElementById("ayah").innerText = namaAyah;
+                if (namaIbu) document.getElementById("ibu").innerText = namaIbu;
+                if (namaTempat) document.getElementById("tempat").innerText = namaTempat;
+                if (tglAcara) document.getElementById("waktu").innerText = tglAcara;
+            };
+        </script>
+    </body>
+</html>
