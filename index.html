@@ -1,207 +1,298 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galaxy Background</title>
-    <style>
-        /* Reset and basic setup */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box; /* Fixed typo: borde-box -> border-box */
-        }
-
-        body {
-            height: 100vh;
-            width: 100vw;
-            overflow: hidden;
-            background: #000;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        /* The Galaxy Background Layer */
-        .galaxy-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            background: 
-                /* Multiple layered gradients for depth */
-                radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 50%, #000 100%),
-                radial-gradient(ellipse at top, #0c0f1a 0%, transparent 50%);
-            overflow: hidden;
-        }
-
-        /* Enhanced Stars - More stars, varied sizes & colors */
-        .stars {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            background: transparent;
-            box-shadow: 
-                /* Original stars */
-                1744px 122px #FFF, 134px 1321px #FFF, 92px 859px #FFF, 
-                1829px 1021px #FFF, 123px 45px #FFF, 1500px 1500px #FFF,
-                /* More stars for density */
-                200px 300px #FFF, 800px 600px #FFF, 1200px 900px #FFF,
-                400px 1100px #FFF, 1600px 400px #FFF, 300px 1400px #FFF,
-                900px 200px #FFF, 1400px 800px #FFF, 500px 1200px #FFF;
-            animation: animStar 70s linear infinite;
-            top: 0;
-            left: 0;
-        }
-
-        .stars2 {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: transparent;
-            box-shadow: 
-                1744px 122px #FFF, 134px 1321px #FFF, 92px 859px #FFF, 
-                1829px 1021px #FFF, 123px 45px #FFF, 1500px 1500px #FFF,
-                200px 300px #FFF, 800px 600px #FFF, 1200px 900px #FFF;
-            animation: animStar 120s linear infinite reverse;
-            top: 0;
-            left: 0;
-        }
-
-        /* Multiple nebulae for richer effect */
-        .nebula {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(40px);
-            animation: pulse 8s ease-in-out infinite alternate;
-        }
-
-        .nebula1 {
-            top: 30%;
-            left: 20%;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(138, 43, 226, 0.3) 0%, rgba(0, 0, 0, 0) 70%);
-            animation-delay: 0s;
-        }
-
-        .nebula2 {
-            top: 60%;
-            right: 20%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(30, 144, 255, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
-            animation-delay: -2s;
-        }
-
-        .nebula3 {
-            top: 70%;
-            left: 50%;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(255, 20, 147, 0.25) 0%, rgba(0, 0, 0, 0) 70%);
-            animation-delay: -4s;
-        }
-
-        /* Content Card Styling */
-        .content {
-            position: relative;
-            z-index: 10;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            text-align: center;
-            color: white;
-            box-shadow: 
-                0 15px 35px rgba(0,0,0,0.5),
-                0 0 30px rgba(138, 43, 226, 0.3);
-            max-width: 400px;
-            transition: transform 0.3s ease;
-        }
-
-        .content:hover {
-            transform: translateY(-10px);
-        }
-
-        .content h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 0 0 20px rgba(255,255,255,0.8);
-            background: linear-gradient(45deg, #fff, #aaa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .content p {
-            font-size: 1.1rem;
-            color: #ddd;
-            line-height: 1.6;
-        }
-
-        /* Animations */
-        @keyframes animStar {
-            from { transform: translateY(0px) rotate(0deg); }
-            to { transform: translateY(-2000px) rotate(360deg); }
-        }
-
-        @keyframes pulse {
-            0% { 
-                transform: scale(1); 
-                opacity: 0.4; 
-            }
-            100% { 
-                transform: scale(1.3); 
-                opacity: 0.7; 
-            }
-        }
-
-        /* Shooting star effect */
-        .shooting-star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: #fff;
-            box-shadow: 0 0 10px #fff;
-            top: 20%;
-            left: 10%;
-            animation: shoot 3s linear infinite;
-            z-index: 2;
-        }
-
-        @keyframes shoot {
-            0% {
-                transform: translateX(0) translateY(0) rotate(45deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateX(120vw) translateY(120vh) rotate(45deg);
-                opacity: 0;
-            }
-        }
-    </style>
+    <title>malem nya cerah</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Background Elements -->
-    <div class="galaxy-bg">
-        <div class="stars"></div>
-        <div class="stars2"></div>
-        <div class="nebula nebula1"></div>
-        <div class="nebula nebula2"></div>
-        <div class="nebula nebula3"></div>
-        <div class="shooting-star"></div>
+    <!-- BACKGROUND WITH FLOATING ELEMENTS -->
+    <div class="cute-bg">
+        <div class="stars-container"></div>
+        <div class="floating-bears"></div>
+        <div class="floating-hearts"></div>
+        <div class="floating-bubbles"></div>
     </div>
 
-    <!-- Foreground Content -->
-    <div class="content">
-        <h1>🌌 Deep Space</h1>
-        <p>Welcome to the galaxy. This background is created entirely with CSS gradients, box-shadows, and animations.</p>
+    <!-- MAIN CONTAINER -->
+    <div class="main-container">
+        <!-- TOP DECORATION -->
+        <div class="top-deco">
+            <i class="fas fa-sparkles sparkle1"></i>
+            <i class="fas fa-heart sparkle2"></i>
+            <i class="fas fa-star sparkle3"></i>
+        </div>
+
+        <!-- LOVE BOX -->
+        <div class="love-box">
+            <!-- HEADER WITH BEAR -->
+            <div class="box-header">
+                <div class="bear-emoji">🐻‍❄️</div>
+                <h1 class="love-title">Nih Buat Kamu</h1>
+                <p class="subtitle">-_-"'</p>
+            </div>
+
+            <!-- PHOTO FRAME -->
+            <div class="photo-wrapper">
+                <div class="photo-frame">
+                    <img src="https://i.pinimg.com/736x/35/ed/27/35ed2720560de52fb6332fb4640f2caa.jpg" alt="Sayangku" class="princess-photo">
+                    <div class="photo-ribbon">
+                        <span>Never Mind</span>
+                    </div>
+                    <div class="photo-glow"></div>
+                </div>
+            </div>
+
+            <!-- SWEET MESSAGES -->
+            <div class="messages-container">
+                <div class="message-card">
+                    <div class="msg-icon">🌸</div>
+                    <p>Ga tau mau di ketik apa</p>
+                </div>
+                <div class="message-card">
+                    <div class="msg-icon">💕</div>
+                    <p>Yang penting ga error </p>
+                </div>
+                <div class="message-card">
+                    <div class="msg-icon">⭐</div>
+                    <p>yaa.... begitulah</p>
+                </div>
+                <div class="message-card special">
+                    <div class="msg-icon">:V</div>
+                    <p><strong>Dah malem</strong></p>
+                </div>
+            </div>
+
+            <!-- LOVE STATS -->
+            <div class="love-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="loveCount">999+</span>
+                    <span class="stat-label">Jantungan</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="kissCount">∞</span>
+                    <span class="stat-label">Molor</span>
+                </div>
+            </div>
+
+            <!-- CUTE BUTTONS -->
+            <div class="cute-buttons">
+                <button class="btn-cute primary" onclick="sendSuperLove()">
+                    <i class="fas fa-heart"></i> Pencet aja
+                </button>
+                <button class="btn-cute secondary" onclick="showSweetSurprise()">
+                    <i class="fas fa-gift"></i> Pencet aja ✨
+                </button>
+                <button class="btn-cute hug" onclick="hugTime()">
+                    <i class="fas fa-hug"></i> Ga usah di pencet
+                </button>
+            </div>
+
+            <!-- SIGNATURE -->
+            <div class="signature">
+                <p>Dari orang lewat</p>
+            </div>
+        </div>
+
+        <!-- BOTTOM DECORATION -->
+        <div class="bottom-deco">
+            <i class="fas fa-cloud sparkle4"></i>
+            <i class="fas fa-magic sparkle5"></i>
+        </div>
     </div>
+
+    <!-- SWEET SURPRISE MODAL -->
+    <div class="sweet-modal" id="sweetModal">
+        <div class="modal-content">
+            <div class="close-btn" onclick="closeSurprise()">×</div>
+            <div class="surprise-content">
+                <div class="big-emoji">🎂✨</div>
+                <h2>Dah malemmmm!</h2>
+                <p class="surprise-text">Molorrr</p>
+                <div class="surprise-buttons">
+                    <button class="btn-tiny" onclick="loveExplosion()"> Explosion 💥</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // SEMUA JAVASCRIPT DI SINI - 100% JALAN!
+        // ============================================
+        
+        // INISIALISASI
+        document.addEventListener('DOMContentLoaded', function() {
+            initCuteAnimations();
+            createFloatingElements();
+            startMessageAnimation();
+            updateLoveCounter();
+            createSparkleEffect();
+            
+            // Kejutan otomatis
+            setTimeout(() => showWelcomeLove(), 2500);
+        });
+
+        // ANIMASI BEAR
+        function initCuteAnimations() {
+            const bear = document.querySelector('.bear-emoji');
+            setInterval(() => {
+                bear.style.transform = 'rotate(-5deg)';
+                setTimeout(() => bear.style.transform = 'rotate(5deg)', 500);
+            }, 2000);
+        }
+
+        // FLOATING ELEMENTS
+        function createFloatingElements() {
+            // Beruang
+            setInterval(() => createFloater('.floating-bears', ['🐻‍❄️','🐼','🧸'], 2500), 2000);
+            // Hati
+            setInterval(() => createFloater('.floating-hearts', ['💕','💖','💗'], 1500), 1200);
+            // Bintang
+            createStars();
+        }
+
+        function createFloater(container, emojis, delay) {
+            const cont = document.querySelector(container);
+            const floater = document.createElement('div');
+            floater.innerHTML = emojis[Math.floor(Math.random()*emojis.length)];
+            floater.className = container.includes('hearts') ? 'heart-float' : 'bear-float';
+            floater.style.left = Math.random()*100 + 'vw';
+            floater.style.animationDuration = (Math.random()*3+4)+'s';
+            cont.appendChild(floater);
+            setTimeout(()=>floater.remove(), 8000);
+        }
+
+        function createStars() {
+            const starsCont = document.querySelector('.stars-container');
+            for(let i=0; i<25; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.innerHTML = '⭐';
+                star.style.left = Math.random()*100+'%';
+                star.style.top = Math.random()*50+'%';
+                star.style.animationDelay = Math.random()*3+'s';
+                starsCont.appendChild(star);
+            }
+        }
+
+        // MESSAGE ANIMATION
+        function startMessageAnimation() {
+            document.querySelectorAll('.message-card').forEach((msg,i)=>{
+                setTimeout(()=> {
+                    msg.style.opacity='1';
+                    msg.style.transform='translateY(0)';
+                }, i*300);
+            });
+        }
+
+        // LOVE COUNTER
+        function updateLoveCounter() {
+            let count=999;
+            setInterval(()=>{
+                count += Math.floor(Math.random()*15)+5;
+                document.getElementById('loveCount').textContent=count+'+';
+            }, 4000);
+        }
+
+        // SPARKLE EFFECT
+        function createSparkleEffect() {
+            setInterval(createSparkle, 1000);
+        }
+        function createSparkle() {
+            const sparkle=document.createElement('div');
+            sparkle.innerHTML='✨';
+            sparkle.style.cssText='position:fixed;left:'+Math.random()*100+'vw;top:'+Math.random()*100+'vh;font-size:1.5rem;pointer-events:none;z-index:100;animation:sparkleFade 2s ease-out forwards';
+            document.body.appendChild(sparkle);
+            setTimeout(()=>sparkle.remove(),2000);
+        }
+
+        // BUTTONS
+        function sendSuperLove() {
+            for(let i=0;i<40;i++) setTimeout(createHeartExplosion,i*40);
+            document.querySelector('.love-box').style.animation='boxShake 0.6s';
+            setTimeout(()=>showSweetAlert('💕 CINTA TERCAPAI! 💕','Sayangku menerima cinta super! 🥰'),500);
+        }
+
+        function showSweetSurprise() {
+            document.getElementById('sweetModal').style.display='flex';
+            document.body.style.overflow='hidden';
+            createConfetti();
+        }
+
+        function hugTime() {
+            for(let i=0;i<12;i++) setTimeout(createHugEffect,i*150);
+            showSweetAlert('🤗 PELUKAN HANGAT! 🤗','Aku peluk kamu erat-erat ya! 🥺💕');
+        }
+
+        function closeSurprise() {
+            document.getElementById('sweetModal').style.display='none';
+            document.body.style.overflow='auto';
+        }
+
+        function loveExplosion() {
+            for(let i=0;i<25;i++) setTimeout(createHeartExplosion,i*30);
+            closeSurprise();
+        }
+
+        // EFFECTS
+        function createHeartExplosion() {
+            const hearts=['💕','💖','💗','💓','💞'];
+            const cont=document.querySelector('.main-container');
+            const heart=document.createElement('div');
+            heart.innerHTML=hearts[Math.floor(Math.random()*5)];
+            heart.style.cssText='position:fixed;left:50%;top:50%;font-size:2rem;pointer-events:none;z-index:999;animation:heartExplosion 1s ease-out forwards';
+            cont.appendChild(heart);
+            setTimeout(()=>heart.remove(),1000);
+        }
+
+        function createConfetti() {
+            for(let i=0;i<80;i++) {
+                setTimeout(()=>{
+                    const confetti=document.createElement('div');
+                    confetti.innerHTML=['🎉','✨','🎊','🌟'][Math.floor(Math.random()*4)];
+                    confetti.style.cssText='position:fixed;left:'+Math.random()*100+'vw;top:-10px;font-size:1.2rem;pointer-events:none;z-index:1000;animation:confettiFall 3s linear forwards';
+                    document.body.appendChild(confetti);
+                    setTimeout(()=>confetti.remove(),3000);
+                },i*25);
+            }
+        }
+
+        function createHugEffect() {
+            const hugs=['🤗','🥰','😘','💕'];
+            const hug=document.createElement('div');
+            hug.innerHTML=hugs[Math.floor(Math.random()*4)];
+            hug.style.cssText='position:fixed;left:'+Math.random()*80+'vw;top:'+Math.random()*60+'vh;font-size:2.5rem;pointer-events:none;z-index:999;animation:hugBounce 1s ease-out forwards';
+            document.body.appendChild(hug);
+            setTimeout(()=>hug.remove(),1000);
+        }
+
+        function showWelcomeLove() {
+            showSweetAlert('💕 HALO SAYANG! 💕','Aku kangen banget sama kamu 🥺❤️');
+        }
+
+        function showSweetAlert(title,msg) {
+            const alert=document.createElement('div');
+            alert.className='sweet-alert';
+            alert.innerHTML='<div class="alert-heart">💖</div><h3>'+title+'</h3><p>'+msg+'</p>';
+            document.body.appendChild(alert);
+            setTimeout(()=>alert.style.transform='scale(1) translate(-50%,0)',100);
+            setTimeout(()=>alert.remove(),3500);
+        }
+
+        // MOUSE FOLLOWER
+        document.addEventListener('mousemove',e=>{
+            if(Math.random()<0.3) {
+                const sparkle=document.createElement('div');
+                sparkle.innerHTML='✨';
+                sparkle.style.cssText='position:fixed;left:'+e.clientX+'px;top:'+e.clientY+'px;font-size:1rem;pointer-events:none;z-index:1000;animation:mouseSparkle 0.6s ease-out forwards';
+                document.body.appendChild(sparkle);
+                setTimeout(()=>sparkle.remove(),600);
+            }
+        });
+    </script>
 </body>
 </html>
