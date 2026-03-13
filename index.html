@@ -3,294 +3,340 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>malem nya cerah</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Pesan malam</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Georgia', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* PARTICLES */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255,255,255,0.8);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* LETTER CONTAINER */
+        .letter-container {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 50px 40px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.2);
+            position: relative;
+            z-index: 10;
+        }
+
+        /* LETTER TITLE */
+        .letter-title {
+            text-align: center;
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            from { text-shadow: 0 5px 15px rgba(255,255,255,0.5); }
+            to { text-shadow: 0 5px 25px rgba(255,255,255,0.8), 0 0 30px rgba(255,255,255,0.3); }
+        }
+
+        /* TYPING TEXT */
+        .typing-text {
+            color: #f8f9fa;
+            font-size: 1.3rem;
+            line-height: 1.8;
+            text-align: justify;
+            white-space: pre-wrap;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .typing-text.current {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .typing-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.5rem;
+            background: #fff;
+            margin-left: 2px;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* HEART BUTTON */
+        .heart-btn {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255,107,107,0.4);
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+
+        .heart-btn:hover {
+            transform: translateX(-50%) translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255,107,107,0.6);
+        }
+
+        .heart-btn:active {
+            transform: translateX(-50%) scale(0.95);
+        }
+
+        /* HEART EXPLOSION */
+        .heart-explosion {
+            position: fixed;
+            pointer-events: none;
+            z-index: 100;
+            font-size: 2rem;
+            animation: heartFly 2s ease-out forwards;
+        }
+
+        @keyframes heartFly {
+            0% {
+                opacity: 1;
+                transform: scale(0) rotate(0deg) translate(0,0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2) rotate(180deg);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0) rotate(360deg) translate(var(--dx), var(--dy));
+            }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 480px) {
+            .letter-container {
+                padding: 30px 25px;
+                margin: 20px;
+            }
+            .letter-title {
+                font-size: 2rem;
+            }
+            .typing-text {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- BACKGROUND WITH FLOATING ELEMENTS -->
-    <div class="cute-bg">
-        <div class="stars-container"></div>
-        <div class="floating-bears"></div>
-        <div class="floating-hearts"></div>
-        <div class="floating-bubbles"></div>
-    </div>
+    <!-- PARTICLES BACKGROUND -->
+    <div class="particles" id="particles"></div>
 
-    <!-- MAIN CONTAINER -->
-    <div class="main-container">
-        <!-- TOP DECORATION -->
-        <div class="top-deco">
-            <i class="fas fa-sparkles sparkle1"></i>
-            <i class="fas fa-heart sparkle2"></i>
-            <i class="fas fa-star sparkle3"></i>
-        </div>
-
-        <!-- LOVE BOX -->
-        <div class="love-box">
-            <!-- HEADER WITH BEAR -->
-            <div class="box-header">
-                <div class="bear-emoji">🐻‍❄️</div>
-                <h1 class="love-title">Nih Buat Kamu</h1>
-                <p class="subtitle">-_-"'</p>
-            </div>
-
-            <!-- PHOTO FRAME -->
-            <div class="photo-wrapper">
-                <div class="photo-frame">
-                    <img src="https://i.pinimg.com/736x/35/ed/27/35ed2720560de52fb6332fb4640f2caa.jpg" alt="Sayangku" class="princess-photo">
-                    <div class="photo-ribbon">
-                        <span>Never Mind</span>
-                    </div>
-                    <div class="photo-glow"></div>
-                </div>
-            </div>
-
-            <!-- SWEET MESSAGES -->
-            <div class="messages-container">
-                <div class="message-card">
-                    <div class="msg-icon">🌸</div>
-                    <p>Ga tau mau di ketik apa</p>
-                </div>
-                <div class="message-card">
-                    <div class="msg-icon">💕</div>
-                    <p>Yang penting ga error </p>
-                </div>
-                <div class="message-card">
-                    <div class="msg-icon">⭐</div>
-                    <p>yaa.... begitulah</p>
-                </div>
-                <div class="message-card special">
-                    <div class="msg-icon">:V</div>
-                    <p><strong>Dah malem</strong></p>
-                </div>
-            </div>
-
-            <!-- LOVE STATS -->
-            <div class="love-stats">
-                <div class="stat-item">
-                    <span class="stat-number" id="loveCount">999+</span>
-                    <span class="stat-label">Jantungan</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" id="kissCount">∞</span>
-                    <span class="stat-label">Molor</span>
-                </div>
-            </div>
-
-            <!-- CUTE BUTTONS -->
-            <div class="cute-buttons">
-                <button class="btn-cute primary" onclick="sendSuperLove()">
-                    <i class="fas fa-heart"></i> Pencet aja
-                </button>
-                <button class="btn-cute secondary" onclick="showSweetSurprise()">
-                    <i class="fas fa-gift"></i> Pencet aja ✨
-                </button>
-                <button class="btn-cute hug" onclick="hugTime()">
-                    <i class="fas fa-hug"></i> Ga usah di pencet
-                </button>
-            </div>
-
-            <!-- SIGNATURE -->
-            <div class="signature">
-                <p>Dari orang lewat</p>
-            </div>
-        </div>
-
-        <!-- BOTTOM DECORATION -->
-        <div class="bottom-deco">
-            <i class="fas fa-cloud sparkle4"></i>
-            <i class="fas fa-magic sparkle5"></i>
-        </div>
-    </div>
-
-    <!-- SWEET SURPRISE MODAL -->
-    <div class="sweet-modal" id="sweetModal">
-        <div class="modal-content">
-            <div class="close-btn" onclick="closeSurprise()">×</div>
-            <div class="surprise-content">
-                <div class="big-emoji">🎂✨</div>
-                <h2>Dah malemmmm!</h2>
-                <p class="surprise-text">Molorrr</p>
-                <div class="surprise-buttons">
-                    <button class="btn-tiny" onclick="loveExplosion()"> Explosion 💥</button>
-                </div>
-            </div>
-        </div>
+    <!-- LETTER -->
+    <div class="letter-container">
+        <h1 class="letter-title">Baca aja</h1>
+        <div class="typing-text" id="typingText"></div>
+        <button class="heart-btn" id="heartBtn" onclick="nextMessage()">
+            Pencet!
+        </button>
     </div>
 
     <script>
-        // ============================================
-        // SEMUA JAVASCRIPT DI SINI - 100% JALAN!
-        // ============================================
-        
+        // MESSAGes ROMANTIS (EDIT SESUKA HATI!)
+        const loveMessages = [
+            `Jadi ada yang mau aku kasih tau...`,
+            `Ini kan dah malem yak`,
+            `Jadi aku kasih tau kamu key`,
+            `Gini....`,
+            `Tidurrrrrrrrrr`,
+            `Dah malem Keyyyyyy`,
+            `Rehatttttt`,
+            `.......`,
+            `Dah gitu aja`,
+            `Jan lupa molor`
+        ];
+
+        let currentMessageIndex = 0;
+        let charIndex = 0;
+        let isTyping = false;
+
+        const typingText = document.getElementById('typingText');
+        const heartBtn = document.getElementById('heartBtn');
+
         // INISIALISASI
-        document.addEventListener('DOMContentLoaded', function() {
-            initCuteAnimations();
-            createFloatingElements();
-            startMessageAnimation();
-            updateLoveCounter();
-            createSparkleEffect();
+        window.onload = function() {
+            createParticles();
+            typeMessage();
+            setTimeout(() => heartBtn.style.opacity = '1', 2000);
+        };
+
+        // TYPEWRITER EFFECT
+        function typeMessage() {
+            if (currentMessageIndex >= loveMessages.length) {
+                heartBtn.innerHTML = 'Meremmmm';
+                heartBtn.onclick = createHeartRain;
+                return;
+            }
+
+            isTyping = true;
+            heartBtn.style.opacity = '0.5';
+            heartBtn.disabled = true;
+
+            const currentMessage = loveMessages[currentMessageIndex];
+            const currentText = currentMessage.substring(0, charIndex) + '<span class="typing-cursor">|</span>';
+
+            typingText.innerHTML = currentText;
+            typingText.classList.add('current');
+
+            charIndex++;
+
+            if (charIndex <= currentMessage.length) {
+                setTimeout(typeMessage, 80 + Math.random() * 50);
+            } else {
+                charIndex = 0;
+                currentMessageIndex++;
+                isTyping = false;
+                setTimeout(() => {
+                    heartBtn.style.opacity = '1';
+                    heartBtn.disabled = false;
+                }, 500);
+            }
+        }
+
+        // NEXT MESSAGE
+        function nextMessage() {
+            if (isTyping) return;
             
-            // Kejutan otomatis
-            setTimeout(() => showWelcomeLove(), 2500);
+            // Clear cursor
+            typingText.innerHTML = loveMessages[currentMessageIndex - 1];
+            typingText.classList.remove('current');
+            
+            setTimeout(typeMessage, 300);
+        }
+
+        // PARTICLES
+        function createParticles() {
+            const particles = document.getElementById('particles');
+            
+            // Stars
+            for (let i = 0; i < 80; i++) {
+                const star = document.createElement('div');
+                star.className = 'particle';
+                star.style.width = star.style.height = (Math.random() * 3 + 1) + 'px';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 10 + 's';
+                star.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                particles.appendChild(star);
+            }
+        }
+
+        // HEART RAIN (AKHIR)
+        function createHeartRain() {
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    createFlyingHeart();
+                }, i * 50);
+            }
+        }
+
+        function createFlyingHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = ['💖', '💕', '💗', '💓', '💞'][Math.floor(Math.random() * 5)];
+            heart.className = 'heart-explosion';
+            
+            // Random position & direction
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = '100vh';
+            heart.style.setProperty('--dx', (Math.random() - 0.5) * 200 + 'px');
+            heart.style.setProperty('--dy', '-200px');
+            
+            document.body.appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 2000);
+        }
+
+        // CLICK ANYWHERE HEART
+        document.addEventListener('click', function(e) {
+            if (currentMessageIndex >= loveMessages.length) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '💖';
+                heart.style.position = 'fixed';
+                heart.style.left = e.clientX + 'px';
+                heart.style.top = e.clientY + 'px';
+                heart.style.fontSize = '2rem';
+                heart.style.pointerEvents = 'none';
+                heart.style.zIndex = '1000';
+                heart.style.animation = 'heartFly 1s ease-out forwards';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 1000);
+            }
         });
 
-        // ANIMASI BEAR
-        function initCuteAnimations() {
-            const bear = document.querySelector('.bear-emoji');
-            setInterval(() => {
-                bear.style.transform = 'rotate(-5deg)';
-                setTimeout(() => bear.style.transform = 'rotate(5deg)', 500);
-            }, 2000);
-        }
-
-        // FLOATING ELEMENTS
-        function createFloatingElements() {
-            // Beruang
-            setInterval(() => createFloater('.floating-bears', ['🐻‍❄️','🐼','🧸'], 2500), 2000);
-            // Hati
-            setInterval(() => createFloater('.floating-hearts', ['💕','💖','💗'], 1500), 1200);
-            // Bintang
-            createStars();
-        }
-
-        function createFloater(container, emojis, delay) {
-            const cont = document.querySelector(container);
-            const floater = document.createElement('div');
-            floater.innerHTML = emojis[Math.floor(Math.random()*emojis.length)];
-            floater.className = container.includes('hearts') ? 'heart-float' : 'bear-float';
-            floater.style.left = Math.random()*100 + 'vw';
-            floater.style.animationDuration = (Math.random()*3+4)+'s';
-            cont.appendChild(floater);
-            setTimeout(()=>floater.remove(), 8000);
-        }
-
-        function createStars() {
-            const starsCont = document.querySelector('.stars-container');
-            for(let i=0; i<25; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                star.innerHTML = '⭐';
-                star.style.left = Math.random()*100+'%';
-                star.style.top = Math.random()*50+'%';
-                star.style.animationDelay = Math.random()*3+'s';
-                starsCont.appendChild(star);
-            }
-        }
-
-        // MESSAGE ANIMATION
-        function startMessageAnimation() {
-            document.querySelectorAll('.message-card').forEach((msg,i)=>{
-                setTimeout(()=> {
-                    msg.style.opacity='1';
-                    msg.style.transform='translateY(0)';
-                }, i*300);
-            });
-        }
-
-        // LOVE COUNTER
-        function updateLoveCounter() {
-            let count=999;
-            setInterval(()=>{
-                count += Math.floor(Math.random()*15)+5;
-                document.getElementById('loveCount').textContent=count+'+';
-            }, 4000);
-        }
-
-        // SPARKLE EFFECT
-        function createSparkleEffect() {
-            setInterval(createSparkle, 1000);
-        }
-        function createSparkle() {
-            const sparkle=document.createElement('div');
-            sparkle.innerHTML='✨';
-            sparkle.style.cssText='position:fixed;left:'+Math.random()*100+'vw;top:'+Math.random()*100+'vh;font-size:1.5rem;pointer-events:none;z-index:100;animation:sparkleFade 2s ease-out forwards';
-            document.body.appendChild(sparkle);
-            setTimeout(()=>sparkle.remove(),2000);
-        }
-
-        // BUTTONS
-        function sendSuperLove() {
-            for(let i=0;i<40;i++) setTimeout(createHeartExplosion,i*40);
-            document.querySelector('.love-box').style.animation='boxShake 0.6s';
-            setTimeout(()=>showSweetAlert('💕 CINTA TERCAPAI! 💕','Sayangku menerima cinta super! 🥰'),500);
-        }
-
-        function showSweetSurprise() {
-            document.getElementById('sweetModal').style.display='flex';
-            document.body.style.overflow='hidden';
-            createConfetti();
-        }
-
-        function hugTime() {
-            for(let i=0;i<12;i++) setTimeout(createHugEffect,i*150);
-            showSweetAlert('🤗 PELUKAN HANGAT! 🤗','Aku peluk kamu erat-erat ya! 🥺💕');
-        }
-
-        function closeSurprise() {
-            document.getElementById('sweetModal').style.display='none';
-            document.body.style.overflow='auto';
-        }
-
-        function loveExplosion() {
-            for(let i=0;i<25;i++) setTimeout(createHeartExplosion,i*30);
-            closeSurprise();
-        }
-
-        // EFFECTS
-        function createHeartExplosion() {
-            const hearts=['💕','💖','💗','💓','💞'];
-            const cont=document.querySelector('.main-container');
-            const heart=document.createElement('div');
-            heart.innerHTML=hearts[Math.floor(Math.random()*5)];
-            heart.style.cssText='position:fixed;left:50%;top:50%;font-size:2rem;pointer-events:none;z-index:999;animation:heartExplosion 1s ease-out forwards';
-            cont.appendChild(heart);
-            setTimeout(()=>heart.remove(),1000);
-        }
-
-        function createConfetti() {
-            for(let i=0;i<80;i++) {
-                setTimeout(()=>{
-                    const confetti=document.createElement('div');
-                    confetti.innerHTML=['🎉','✨','🎊','🌟'][Math.floor(Math.random()*4)];
-                    confetti.style.cssText='position:fixed;left:'+Math.random()*100+'vw;top:-10px;font-size:1.2rem;pointer-events:none;z-index:1000;animation:confettiFall 3s linear forwards';
-                    document.body.appendChild(confetti);
-                    setTimeout(()=>confetti.remove(),3000);
-                },i*25);
-            }
-        }
-
-        function createHugEffect() {
-            const hugs=['🤗','🥰','😘','💕'];
-            const hug=document.createElement('div');
-            hug.innerHTML=hugs[Math.floor(Math.random()*4)];
-            hug.style.cssText='position:fixed;left:'+Math.random()*80+'vw;top:'+Math.random()*60+'vh;font-size:2.5rem;pointer-events:none;z-index:999;animation:hugBounce 1s ease-out forwards';
-            document.body.appendChild(hug);
-            setTimeout(()=>hug.remove(),1000);
-        }
-
-        function showWelcomeLove() {
-            showSweetAlert('💕 HALO SAYANG! 💕','Aku kangen banget sama kamu 🥺❤️');
-        }
-
-        function showSweetAlert(title,msg) {
-            const alert=document.createElement('div');
-            alert.className='sweet-alert';
-            alert.innerHTML='<div class="alert-heart">💖</div><h3>'+title+'</h3><p>'+msg+'</p>';
-            document.body.appendChild(alert);
-            setTimeout(()=>alert.style.transform='scale(1) translate(-50%,0)',100);
-            setTimeout(()=>alert.remove(),3500);
-        }
-
-        // MOUSE FOLLOWER
-        document.addEventListener('mousemove',e=>{
-            if(Math.random()<0.3) {
-                const sparkle=document.createElement('div');
-                sparkle.innerHTML='✨';
-                sparkle.style.cssText='position:fixed;left:'+e.clientX+'px;top:'+e.clientY+'px;font-size:1rem;pointer-events:none;z-index:1000;animation:mouseSparkle 0.6s ease-out forwards';
-                document.body.appendChild(sparkle);
-                setTimeout(()=>sparkle.remove(),600);
+        // MOBILE TOUCH
+        document.addEventListener('touchstart', function(e) {
+            const touch = e.touches[0];
+            if (currentMessageIndex >= loveMessages.length) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '💖';
+                heart.style.cssText = `
+                    position:fixed;left:${touch.clientX}px;top:${touch.clientY}px;
+                    font-size:2rem;pointer-events:none;z-index:1000;
+                    animation:heartFly 1s ease-out forwards
+                `;
+                document.body.appendChild(heart);
+                setTimeout(()=>heart.remove(),1000);
             }
         });
     </script>
