@@ -3,342 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pesan malam</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            height: 100vh;
-            width: 100vw;
-            overflow: hidden;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            font-family: 'Georgia', serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        /* PARTICLES */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .particle {
-            position: absolute;
-            background: rgba(255,255,255,0.8);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        /* LETTER CONTAINER */
-        .letter-container {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(20px);
-            border-radius: 25px;
-            padding: 50px 40px;
-            max-width: 500px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.2);
-            position: relative;
-            z-index: 10;
-        }
-
-        /* LETTER TITLE */
-        .letter-title {
-            text-align: center;
-            color: white;
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            text-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            animation: titleGlow 3s ease-in-out infinite alternate;
-        }
-
-        @keyframes titleGlow {
-            from { text-shadow: 0 5px 15px rgba(255,255,255,0.5); }
-            to { text-shadow: 0 5px 25px rgba(255,255,255,0.8), 0 0 30px rgba(255,255,255,0.3); }
-        }
-
-        /* TYPING TEXT */
-        .typing-text {
-            color: #f8f9fa;
-            font-size: 1.3rem;
-            line-height: 1.8;
-            text-align: justify;
-            white-space: pre-wrap;
-            margin-bottom: 20px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s ease forwards;
-        }
-
-        .typing-text.current {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .typing-cursor {
-            display: inline-block;
-            width: 2px;
-            height: 1.5rem;
-            background: #fff;
-            margin-left: 2px;
-            animation: blink 1s infinite;
-            vertical-align: middle;
-        }
-
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* HEART BUTTON */
-        .heart-btn {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
-            border: none;
-            color: white;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(255,107,107,0.4);
-            transition: all 0.3s ease;
-            opacity: 0;
-        }
-
-        .heart-btn:hover {
-            transform: translateX(-50%) translateY(-3px);
-            box-shadow: 0 15px 40px rgba(255,107,107,0.6);
-        }
-
-        .heart-btn:active {
-            transform: translateX(-50%) scale(0.95);
-        }
-
-        /* HEART EXPLOSION */
-        .heart-explosion {
-            position: fixed;
-            pointer-events: none;
-            z-index: 100;
-            font-size: 2rem;
-            animation: heartFly 2s ease-out forwards;
-        }
-
-        @keyframes heartFly {
-            0% {
-                opacity: 1;
-                transform: scale(0) rotate(0deg) translate(0,0);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.2) rotate(180deg);
-            }
-            100% {
-                opacity: 0;
-                transform: scale(0) rotate(360deg) translate(var(--dx), var(--dy));
-            }
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 480px) {
-            .letter-container {
-                padding: 30px 25px;
-                margin: 20px;
-            }
-            .letter-title {
-                font-size: 2rem;
-            }
-            .typing-text {
-                font-size: 1.1rem;
-            }
-        }
-    </style>
+    <title>GAJELASSSSS - Profil Black_Cat</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- PARTICLES BACKGROUND -->
-    <div class="particles" id="particles"></div>
-
-    <!-- LETTER -->
-    <div class="letter-container">
-        <h1 class="letter-title">Baca aja</h1>
-        <div class="typing-text" id="typingText"></div>
-        <button class="heart-btn" id="heartBtn" onclick="nextMessage()">
-            Pencet!
-        </button>
+    <!-- LATAR BELAKANG GALAKSI -->
+    <div class="galaxy-bg">
+        <!-- BINTANG-BINTANG BERGERAK -->
+        <div class="stars"></div>
+        <div class="stars2"></div>
+        
+        <!-- EFEK NEBULA WARNAWARN -->
+        <div class="nebula nebula1"></div>
+        <div class="nebula nebula2"></div>
+        <div class="nebula nebula3"></div>
+        
+        <!-- BINTANG JATUH -->
+        <div class="shooting-star"></div>
     </div>
 
-    <script>
-        // MESSAGes ROMANTIS (EDIT SESUKA HATI!)
-        const loveMessages = [
-            `Jadi ada yang mau aku kasih tau...`,
-            `Ini kan dah malem yak`,
-            `Jadi aku kasih tau kamu key`,
-            `Gini....`,
-            `Tidurrrrrrrrrr`,
-            `Dah malem Keyyyyyy`,
-            `Rehatttttt`,
-            `.......`,
-            `Dah gitu aja`,
-            `Jan lupa molor`
-        ];
+    <!-- KARTU PROFIL UTAMA -->
+    <div class="profile-card" data-tooltip="Klik profil untuk info lengkap! ✨">
+        <!-- FOTO PROFIL -->
+        <div class="profile-img" data-tooltip="Foto profil Black_Cat yang super cool! 😎">
+            <img src="https://i.pinimg.com/736x/74/17/8b/74178bb61c781a7c3087600cec2a269a.jpg" alt="Black_Cat">
+        </div>
+        
+        <!-- NAMA PROFIL -->
+        <h1 class="profile-name" data-tooltip="Nama keren Black_Cat - master rebahan! 🐱">Black_Cat</h1>
+        
+        <!-- DESKRIPSI PROFIL -->
+        <p class="profile-desc" data-tooltip="Deskripsi hidup Black_Cat yang santai banget! 😂">
+            Web SIALAAANNNNNNNNN!!!!!!<br>
+            <small>Nyari referensiiii!!!!.</small>
+        </p>
+        
+        <!-- TAG / SKILL PROFIL -->
+        <div class="profile-tags">
+            <span class="tag" data-tooltip="Aktivitas utama: rebahan seharian 💤">Rebahan</span>
+            <span class="tag" data-tooltip="Lanjutan rebahan: molor sampe siang 😴">Molor</span>
+            <span class="tag" data-tooltip="Energi habis rebahan → langsung makan 🍜">Makan</span>
+            <span class="tag" data-tooltip="Opsional setelah makan (kadang) 🛁">Mandi</span>
+            <span class="tag" data-tooltip="24/7 aktivitas utama 📱">Main hp</span>
+        </div>
+    </div>
 
-        let currentMessageIndex = 0;
-        let charIndex = 0;
-        let isTyping = false;
-
-        const typingText = document.getElementById('typingText');
-        const heartBtn = document.getElementById('heartBtn');
-
-        // INISIALISASI
-        window.onload = function() {
-            createParticles();
-            typeMessage();
-            setTimeout(() => heartBtn.style.opacity = '1', 2000);
-        };
-
-        // TYPEWRITER EFFECT
-        function typeMessage() {
-            if (currentMessageIndex >= loveMessages.length) {
-                heartBtn.innerHTML = 'Meremmmm';
-                heartBtn.onclick = createHeartRain;
-                return;
-            }
-
-            isTyping = true;
-            heartBtn.style.opacity = '0.5';
-            heartBtn.disabled = true;
-
-            const currentMessage = loveMessages[currentMessageIndex];
-            const currentText = currentMessage.substring(0, charIndex) + '<span class="typing-cursor">|</span>';
-
-            typingText.innerHTML = currentText;
-            typingText.classList.add('current');
-
-            charIndex++;
-
-            if (charIndex <= currentMessage.length) {
-                setTimeout(typeMessage, 80 + Math.random() * 50);
-            } else {
-                charIndex = 0;
-                currentMessageIndex++;
-                isTyping = false;
-                setTimeout(() => {
-                    heartBtn.style.opacity = '1';
-                    heartBtn.disabled = false;
-                }, 500);
-            }
-        }
-
-        // NEXT MESSAGE
-        function nextMessage() {
-            if (isTyping) return;
-            
-            // Clear cursor
-            typingText.innerHTML = loveMessages[currentMessageIndex - 1];
-            typingText.classList.remove('current');
-            
-            setTimeout(typeMessage, 300);
-        }
-
-        // PARTICLES
-        function createParticles() {
-            const particles = document.getElementById('particles');
-            
-            // Stars
-            for (let i = 0; i < 80; i++) {
-                const star = document.createElement('div');
-                star.className = 'particle';
-                star.style.width = star.style.height = (Math.random() * 3 + 1) + 'px';
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                star.style.animationDelay = Math.random() * 10 + 's';
-                star.style.animationDuration = (Math.random() * 5 + 5) + 's';
-                particles.appendChild(star);
-            }
-        }
-
-        // HEART RAIN (AKHIR)
-        function createHeartRain() {
-            for (let i = 0; i < 100; i++) {
-                setTimeout(() => {
-                    createFlyingHeart();
-                }, i * 50);
-            }
-        }
-
-        function createFlyingHeart() {
-            const heart = document.createElement('div');
-            heart.innerHTML = ['💖', '💕', '💗', '💓', '💞'][Math.floor(Math.random() * 5)];
-            heart.className = 'heart-explosion';
-            
-            // Random position & direction
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.top = '100vh';
-            heart.style.setProperty('--dx', (Math.random() - 0.5) * 200 + 'px');
-            heart.style.setProperty('--dy', '-200px');
-            
-            document.body.appendChild(heart);
-            
-            setTimeout(() => heart.remove(), 2000);
-        }
-
-        // CLICK ANYWHERE HEART
-        document.addEventListener('click', function(e) {
-            if (currentMessageIndex >= loveMessages.length) {
-                const heart = document.createElement('div');
-                heart.innerHTML = '💖';
-                heart.style.position = 'fixed';
-                heart.style.left = e.clientX + 'px';
-                heart.style.top = e.clientY + 'px';
-                heart.style.fontSize = '2rem';
-                heart.style.pointerEvents = 'none';
-                heart.style.zIndex = '1000';
-                heart.style.animation = 'heartFly 1s ease-out forwards';
-                document.body.appendChild(heart);
-                setTimeout(() => heart.remove(), 1000);
-            }
-        });
-
-        // MOBILE TOUCH
-        document.addEventListener('touchstart', function(e) {
-            const touch = e.touches[0];
-            if (currentMessageIndex >= loveMessages.length) {
-                const heart = document.createElement('div');
-                heart.innerHTML = '💖';
-                heart.style.cssText = `
-                    position:fixed;left:${touch.clientX}px;top:${touch.clientY}px;
-                    font-size:2rem;pointer-events:none;z-index:1000;
-                    animation:heartFly 1s ease-out forwards
-                `;
-                document.body.appendChild(heart);
-                setTimeout(()=>heart.remove(),1000);
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
