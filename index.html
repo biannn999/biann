@@ -1,1 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percobaan- Profil Black_Cat</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <!-- LATAR BELAKANG GALAKSI -->
+    <div class="galaxy-bg">
+        <!-- BINTANG-BINTANG BERGERAK -->
+        <div class="stars"></div>
+        <div class="stars2"></div>
+        
+        <!-- EFEK NEBULA WARNAWARN -->
+        <div class="nebula nebula1"></div>
+        <div class="nebula nebula2"></div>
+        <div class="nebula nebula3"></div>
+        
+        <!-- BINTANG JATUH -->
+        <div class="shooting-star"></div>
+    </div>
 
+    <!-- KARTU PROFIL UTAMA -->
+    <div class="entrance-wrapper">
+    <div class="profile-card">
+        <!-- FOTO PROFIL -->
+        <div class="profile-img">
+            <img src="https://i.pinimg.com/736x/74/17/8b/74178bb61c781a7c3087600cec2a269a.jpg" alt="Black_Cat">
+        </div>
+        
+        <!-- NAMA PROFIL -->
+        <h1 class="profile-name">Black_Cat</h1>
+        
+        <!-- DESKRIPSI PROFIL -->
+        <p class="profile-desc">
+            @fabiantang2<br>
+            <small>kucing hitam :D</small>
+        </p>
+        
+        <!-- TAG / SKILL PROFIL -->
+        <div class="profile-tags">
+            <span class="tag">Rebahan</span>
+            <span class="tag">Molor</span>
+            <span class="tag">Makan</span>
+            <span class="tag">Mandi</span>
+            <span class="tag">Main hp</span>
+        </div>
+    </div>
+    <script>
+         document.addEventListener('DOMContentLoaded', function() {
+            window.addEventListener('load', function() {
+    const loader = document.getElementById('loader');
+    loader.style.opacity = '0';
+    setTimeout(() => {
+        loader.style.display = 'none';
+    }, 1000);
+    });
+
+    
+    const tabData = {
+        rebahan: { title: "Rebahan Expert 🛌", desc: "Level: Master (1000 jam+). Posisi favorit: miring 45°.", emoji: "💤🛌😴" },
+        molor: { title: "Molor Champion 😴", desc: "Rekor: 14 jam nonstop. Bangun: cuma buat pipis.", emoji: "😪💤🫠" },
+        makan: { title: "Makan Predator 🍜", desc: "Menu favorit: mie instan + telor + sambel.", emoji: "🍜🍛🥡" },
+        mandi: { title: "Mandi Minimalis 🛁", desc: "Frekuensi: 2-3x seminggu. Durasi: 3 menit.", emoji: "🛁🚿💧" },
+        'main hp': { title: "HP Addict 📱", desc: "Screen time: 23 jam/hari. Battery: selalu lowbat.", emoji: "📱💻🖥️" }
+    };
+
+    const tags = document.querySelectorAll('.tag');
+    const profileCard = document.querySelector('.profile-card');
+    
+    // 1. BUAT TAB CONTAINER DENGAN CLASS 'hidden' DI AWAL
+    const tabContainer = document.createElement('div');
+    tabContainer.className = 'tab-container hidden'; 
+    tabContainer.innerHTML = `
+        <div class="tab-header">
+            <span class="tab-close">×</span>
+        </div>
+        <div class="tab-content">
+            <h3 class="tab-title"></h3>
+            <p class="tab-desc"></p>
+            <div class="tab-emojis"></div>
+        </div>
+    `;
+    
+    profileCard.appendChild(tabContainer);
+    const tabTitle = tabContainer.querySelector('.tab-title');
+    const tabDesc = tabContainer.querySelector('.tab-desc');
+    const tabEmojis = tabContainer.querySelector('.tab-emojis');
+    const closeBtn = tabContainer.querySelector('.tab-close');
+
+    // 2. FUNGSI CLOSE (Dibuat agar bisa dipanggil kapan saja)
+    const closeTab = () => {
+        tabContainer.classList.add('hidden');
+        tabContainer.style.display = 'none'; // Paksa hilang agar scroll kembali normal
+        tags.forEach(t => {
+            t.style.background = 'rgba(255,255,255,0.1)';
+            t.style.boxShadow = '';
+        });
+    };
+
+    // Event listener untuk tombol Close (X)
+    closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeTab();
+    });
+
+    // 3. EVENT LISTENER TAG
+    tags.forEach(tag => {
+        tag.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const tabKey = this.textContent.toLowerCase().trim();
+            
+            if (tabData[tabKey]) {
+                // Reset tag lain
+                tags.forEach(t => t.style.background = 'rgba(255,255,255,0.1)');
+                
+                // Aktifkan tag ini
+                this.style.background = 'rgba(138, 43, 226, 0.4)';
+                
+                // Isi & Tampilkan Tab
+                tabTitle.textContent = tabData[tabKey].title;
+                tabDesc.textContent = tabData[tabKey].desc;
+                tabEmojis.textContent = tabData[tabKey].emoji;
+                
+                tabContainer.style.display = 'block'; // Munculkan kembali
+                tabContainer.classList.remove('hidden');
+                
+                // Scroll halus
+                tabContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        });
+    });
+
+    // Klik di luar tab (pada kartu) untuk menutup
+    profileCard.addEventListener('click', function(e) {
+        if (!e.target.closest('.tag') && !e.target.closest('.tab-container')) {
+            closeTab();
+        }
+    });
+});
+
+
+</script>
+      
+</body>
+    <div id="loader" style="position:fixed; width:100%; height:100%; background:#000; z-index:9999; display:flex; justify-content:center; align-items:center; transition: opacity 1s;">
+         <h2 style="color:white; font-family:sans-serif; letter-spacing:5px; animate: pulse 2s infinite;">LOADING...</h2>
+    </div>
+</html>
