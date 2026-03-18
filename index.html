@@ -10,7 +10,7 @@
 <body>
     <!-- LATAR BELAKANG GALAKSI -->
     <div class="galaxy-bg">
-        <!-- BINTANG-BINTANG BERGERAK -->
+        <!-- BINTANG-BINTANG GERAK -->
         <div class="stars"></div>
         <div class="stars2"></div>
         
@@ -19,7 +19,7 @@
         <div class="nebula nebula2"></div>
         <div class="nebula nebula3"></div>
         
-        <!-- BINTANG JATUH -->
+        <!-- BINTANG JATOH -->
         <div class="shooting-star"></div>
     </div>
 
@@ -71,7 +71,7 @@
     const tags = document.querySelectorAll('.tag');
     const profileCard = document.querySelector('.profile-card');
     
-    // 1. BUAT TAB CONTAINER DENGAN CLASS 'hidden' DI AWAL
+    // 1.TAB CONTAINER DENGAN CLASS 'hidden' 
     const tabContainer = document.createElement('div');
     tabContainer.className = 'tab-container hidden'; 
     tabContainer.innerHTML = `
@@ -91,17 +91,17 @@
     const tabEmojis = tabContainer.querySelector('.tab-emojis');
     const closeBtn = tabContainer.querySelector('.tab-close');
 
-    // 2. FUNGSI CLOSE (Dibuat agar bisa dipanggil kapan saja)
+    // 2. FUNGSI CLOSE (Dibuat biar bisa dipanggil kapan saja)
     const closeTab = () => {
         tabContainer.classList.add('hidden');
-        tabContainer.style.display = 'none'; // Paksa hilang agar scroll kembali normal
+        tabContainer.style.display = 'none'; // Paksa hilang biar scroll balik normal
         tags.forEach(t => {
             t.style.background = 'rgba(255,255,255,0.1)';
             t.style.boxShadow = '';
         });
     };
 
-    // Event listener untuk tombol Close (X)
+    // Event listener biar tombol Close (X)
     closeBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         closeTab();
@@ -117,7 +117,7 @@
                 // Reset tag lain
                 tags.forEach(t => t.style.background = 'rgba(255,255,255,0.1)');
                 
-                // Aktifkan tag ini
+                // aktifin tag ini
                 this.style.background = 'rgba(138, 43, 226, 0.4)';
                 
                 // Isi & Tampilkan Tab
@@ -134,7 +134,7 @@
         });
     });
 
-    // Klik di luar tab (pada kartu) untuk menutup
+    // Klik di luar tab (pada kartu) buat menutup
     profileCard.addEventListener('click', function(e) {
         if (!e.target.closest('.tag') && !e.target.closest('.tab-container')) {
             closeTab();
