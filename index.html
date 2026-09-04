@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman Login Pelatih & Admin</title>
     <style>
-        /* Reset & Base Styles */
+        /* Reset dasar agar tampilan rapi di semua browser */
         * {
             margin: 0;
             padding: 0;
@@ -18,13 +18,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            /* Background biru langit bercampur putih (Soft Gradient) */
+            /* Background biru langit bercampur putih lembut */
             background: linear-gradient(135deg, #e0f2fe 0%, #ffffff 50%, #bae6fd 100%);
             padding: 20px;
             overflow: hidden;
         }
 
-        /* Animasi Slide dari Bawah */
+        /* Animasi masuk: meluncur (slide) dari bawah */
         @keyframes slideUp {
             from {
                 transform: translateY(100px);
@@ -36,7 +36,7 @@
             }
         }
 
-        /* Animasi Efek Mengkilap (Shine) */
+        /* Animasi kilat cahaya melintasi lingkaran */
         @keyframes shine {
             0% {
                 left: -150%;
@@ -49,25 +49,25 @@
             }
         }
 
-        /* Box Login Mengambang */
+        /* Kotak Login Mengambang */
         .login-box {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             padding: 40px 30px;
             width: 100%;
-            max-width: 400px; /* Ukuran maksimal box */
+            max-width: 400px; /* Lebar maksimal box agar tetap pas di PC */
             border-radius: 24px;
             box-shadow: 0 10px 30px rgba(14, 165, 233, 0.15);
             border: 1px solid rgba(255, 255, 255, 0.6);
             text-align: center;
             position: relative;
             
-            /* Menerapkan animasi masuk */
+            /* Menjalankan animasi masuk */
             animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        /* Gambar Lingkaran Atas dengan Efek Mengkilap */
+        /* Lingkaran Atas Grafis */
         .avatar-container {
             width: 90px;
             height: 90px;
@@ -82,7 +82,7 @@
             box-shadow: 0 8px 20px rgba(56, 189, 248, 0.3);
         }
 
-        /* SVG Ikon User di dalam lingkaran */
+        /* Ikon user SVG putih di dalam lingkaran */
         .avatar-container svg {
             width: 45px;
             height: 45px;
@@ -91,7 +91,7 @@
             z-index: 2;
         }
 
-        /* Lapisan Efek Mengkilap */
+        /* Efek Mengkilap Terang */
         .avatar-container::after {
             content: '';
             position: absolute;
@@ -124,7 +124,7 @@
             font-weight: 500;
         }
 
-        /* Form & Kolom Input Mini */
+        /* Form Grup Kolom Mini */
         .input-group {
             margin-bottom: 20px;
             text-align: left;
@@ -139,7 +139,7 @@
             font-weight: 600;
         }
 
-        /* Styling untuk Input & Select (Dropdown) */
+        /* Desain Kolom Pilihan & Kolom Password */
         .input-field {
             width: 100%;
             padding: 12px 16px;
@@ -150,12 +150,12 @@
             font-size: 0.95rem;
             transition: all 0.3s ease;
             outline: none;
-            appearance: none; /* Menghilangkan panah bawaan browser untuk custom styling */
+            appearance: none; /* Menghapus panah default bawaan sistem gadget */
             -webkit-appearance: none;
             -moz-appearance: none;
         }
 
-        /* Memberikan panah kustom pada elemen select */
+        /* Pembungkus menu pilihan untuk memberi tanda panah kustom */
         .select-wrapper {
             position: relative;
         }
@@ -171,14 +171,14 @@
             pointer-events: none;
         }
 
-        /* Efek fokus yang lembut pada kolom input & select */
+        /* Efek Focus Glow yang Soft */
         .input-field:focus {
             border-color: #38bdf8;
             background-color: #ffffff;
             box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.15);
         }
 
-        /* Tombol Login */
+        /* Tombol Submit */
         .btn-login {
             width: 100%;
             padding: 14px;
@@ -204,7 +204,7 @@
             transform: translateY(0);
         }
 
-        /* Responsivitas untuk Layar Sangat Kecil */
+        /* Responsivitas Layar Sangat Kecil (Mobile Responsive) */
         @media (max-width: 400px) {
             .login-box {
                 padding: 30px 20px;
@@ -232,12 +232,12 @@
 
         <!-- Form Input -->
         <form id="loginForm">
-            <!-- Kolom Pilihan Username / Peran -->
+            <!-- Kolom Pilihan Akses (Dropdown) -->
             <div class="input-group">
-                <label for="role">Pilih Username / Hak Akses</label>
+                <label for="role">Login Sebagai</label>
                 <div class="select-wrapper">
                     <select id="role" class="input-field" required>
-                        <option value="" disabled selected hidden>-- Pilih Akun Anda --</option>
+                        <option value="" disabled selected hidden>-- Pilih Jabatan Akun --</option>
                         <option value="Pelatih">Pelatih</option>
                         <option value="Admin">Admin</option>
                     </select>
@@ -246,7 +246,7 @@
 
             <!-- Kolom Password -->
             <div class="input-group">
-                <label for="password">Password</label>
+                <label for="password">Password Akun</label>
                 <input type="password" id="password" class="input-field" placeholder="••••••••" required>
             </div>
 
@@ -255,32 +255,33 @@
         </form>
     </div>
 
-    <!-- JavaScript untuk Menangani Aksi Login -->
+    <!-- JavaScript untuk Validasi Login -->
     <script>
         document.getElementById('loginForm').addEventListener('submit', function(event) {
+            // Mencegah halaman reload otomatis saat form dikirim
             event.preventDefault(); 
 
-            // Mengambil nilai dari dropdown dan password
+            // Mengambil nilai pilihan jabatan dan isi password
             const selectedRole = document.getElementById('role').value;
             const passwordInput = document.getElementById('password').value;
 
-            // Validasi sederhana jika form belum lengkap
+            // Validasi kelengkapan isian
             if (!selectedRole || passwordInput.trim() === "") {
-                alert("Harap pilih hak akses dan isi password Anda!");
+                alert("Harap tentukan jabatan akun dan isi password Anda!");
                 return;
             }
 
-            // Simulasi respon login berhasil berdasarkan peran yang dipilih
-            alert("Login Berhasil!\nSelamat bekerja sebagai: " + selectedRole);
-            
-            // Contoh redirect halaman sesuai peran (opsional):
-            /*
-            if (selectedRole === "Admin") {
-                window.location.href = "admin_dashboard.html";
-            } else if (selectedRole === "Pelatih") {
-                window.location.href = "pelatih_dashboard.html";
+            // Simulasi pencocokan akun sederhana
+            // Anda dapat mengubah string password di bawah sesuai kebutuhan
+            if (selectedRole === "Admin" && passwordInput === "admin123") {
+                alert("Login Berhasil!\nSelamat datang kembali, Pengelola Sistem (Admin).");
+                // window.location.href = "halaman_admin.html"; // Aktifkan jika ada file tujuan redirect
+            } else if (selectedRole === "Pelatih" && passwordInput === "pelatih123") {
+                alert("Login Berhasil!\nSelamat datang kembali, Pelatih.");
+                // window.location.href = "halaman_pelatih.html"; // Aktifkan jika ada file tujuan redirect
+            } else {
+                alert("Login Gagal! Kombinasi password untuk " + selectedRole + " tidak sesuai.");
             }
-            */
         });
     </script>
 </body>
