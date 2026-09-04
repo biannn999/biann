@@ -103,7 +103,7 @@
                 90deg,
                 rgba(255, 255, 255, 0) 0%,
                 rgba(255, 255, 255, 0.6) 50%,
-                rgba(255, 255, 255, 0) 100
+                rgba(255, 255, 255, 0) 100%
             );
             transform: skewX(-25deg);
             animation: shine 3.5s infinite ease-in-out;
@@ -118,11 +118,10 @@
         }
 
         .login-box p {
-            color: #7dd3fc;
+            color: #64748b;
             font-size: 0.9rem;
             margin-bottom: 30px;
             font-weight: 500;
-            color: #64748b;
         }
 
         /* Form & Kolom Input Mini */
@@ -140,6 +139,7 @@
             font-weight: 600;
         }
 
+        /* Styling untuk Input & Select (Dropdown) */
         .input-field {
             width: 100%;
             padding: 12px 16px;
@@ -150,9 +150,28 @@
             font-size: 0.95rem;
             transition: all 0.3s ease;
             outline: none;
+            appearance: none; /* Menghilangkan panah bawaan browser untuk custom styling */
+            -webkit-appearance: none;
+            -moz-appearance: none;
         }
 
-        /* Efek fokus yang lembut pada kolom input */
+        /* Memberikan panah kustom pada elemen select */
+        .select-wrapper {
+            position: relative;
+        }
+
+        .select-wrapper::after {
+            content: '▼';
+            font-size: 0.75rem;
+            color: #0369a1;
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        /* Efek fokus yang lembut pada kolom input & select */
         .input-field:focus {
             border-color: #38bdf8;
             background-color: #ffffff;
@@ -185,7 +204,7 @@
             transform: translateY(0);
         }
 
-        /* Responsivitas untuk Layar Sangat Kecil (HP jadul/kecil) */
+        /* Responsivitas untuk Layar Sangat Kecil */
         @media (max-width: 400px) {
             .login-box {
                 padding: 30px 20px;
@@ -203,7 +222,6 @@
         
         <!-- Lingkaran Atas dengan Efek Mengkilap -->
         <div class="avatar-container">
-            <!-- Ikon User SVG Sederhana -->
             <svg viewBox="0 0 24 24">
                 <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
             </svg>
@@ -214,10 +232,16 @@
 
         <!-- Form Input -->
         <form id="loginForm">
-            <!-- Kolom Username -->
+            <!-- Kolom Pilihan Username / Peran -->
             <div class="input-group">
-                <label for="username">Username Pelatih / Admin</label>
-                <input type="text" id="username" class="input-field" placeholder="Masukkan username Anda" required autocomplete="off">
+                <label for="role">Pilih Username / Hak Akses</label>
+                <div class="select-wrapper">
+                    <select id="role" class="input-field" required>
+                        <option value="" disabled selected hidden>-- Pilih Akun Anda --</option>
+                        <option value="Pelatih">Pelatih</option>
+                        <option value="Admin">Admin</option>
+                    </select>
+                </div>
             </div>
 
             <!-- Kolom Password -->
@@ -234,24 +258,29 @@
     <!-- JavaScript untuk Menangani Aksi Login -->
     <script>
         document.getElementById('loginForm').addEventListener('submit', function(event) {
-            // Mencegah halaman melakukan reload saat tombol ditekan
             event.preventDefault(); 
 
-            // Mengambil nilai input
-            const usernameInput = document.getElementById('username').value;
+            // Mengambil nilai dari dropdown dan password
+            const selectedRole = document.getElementById('role').value;
             const passwordInput = document.getElementById('password').value;
 
-            // Logika validasi sederhana (Bisa disesuaikan atau dihubungkan ke database/API)
-            if (usernameInput.trim() === "" || passwordInput.trim() === "") {
-                alert("Harap isi semua kolom!");
+            // Validasi sederhana jika form belum lengkap
+            if (!selectedRole || passwordInput.trim() === "") {
+                alert("Harap pilih hak akses dan isi password Anda!");
                 return;
             }
 
-            // Simulasi respon login sukses
-            alert("Login Berhasil!\nSelamat datang, " + usernameInput);
+            // Simulasi respon login berhasil berdasarkan peran yang dipilih
+            alert("Login Berhasil!\nSelamat bekerja sebagai: " + selectedRole);
             
-            // Di sini Anda bisa menambahkan kode redirect halaman, contoh:
-            // window.location.href = "dashboard.html";
+            // Contoh redirect halaman sesuai peran (opsional):
+            /*
+            if (selectedRole === "Admin") {
+                window.location.href = "admin_dashboard.html";
+            } else if (selectedRole === "Pelatih") {
+                window.location.href = "pelatih_dashboard.html";
+            }
+            */
         });
     </script>
 </body>
