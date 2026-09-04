@@ -1,1 +1,258 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Login Pelatih & Admin</title>
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Background biru langit bercampur putih (Soft Gradient) */
+            background: linear-gradient(135deg, #e0f2fe 0%, #ffffff 50%, #bae6fd 100%);
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        /* Animasi Slide dari Bawah */
+        @keyframes slideUp {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Animasi Efek Mengkilap (Shine) */
+        @keyframes shine {
+            0% {
+                left: -150%;
+            }
+            50% {
+                left: 150%;
+            }
+            100% {
+                left: 150%;
+            }
+        }
+
+        /* Box Login Mengambang */
+        .login-box {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 400px; /* Ukuran maksimal box */
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            text-align: center;
+            position: relative;
+            
+            /* Menerapkan animasi masuk */
+            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Gambar Lingkaran Atas dengan Efek Mengkilap */
+        .avatar-container {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #7dd3fc, #38bdf8);
+            border-radius: 50%;
+            margin: 0 auto 25px auto;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.3);
+        }
+
+        /* SVG Ikon User di dalam lingkaran */
+        .avatar-container svg {
+            width: 45px;
+            height: 45px;
+            fill: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Lapisan Efek Mengkilap */
+        .avatar-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.6) 50%,
+                rgba(255, 255, 255, 0) 100
+            );
+            transform: skewX(-25deg);
+            animation: shine 3.5s infinite ease-in-out;
+            z-index: 3;
+        }
+
+        .login-box h2 {
+            color: #0369a1;
+            font-size: 1.6rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .login-box p {
+            color: #7dd3fc;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            font-weight: 500;
+            color: #64748b;
+        }
+
+        /* Form & Kolom Input Mini */
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.85rem;
+            color: #0369a1;
+            margin-bottom: 6px;
+            margin-left: 4px;
+            font-weight: 600;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 12px;
+            background-color: rgba(248, 250, 252, 0.8);
+            color: #334155;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        /* Efek fokus yang lembut pada kolom input */
+        .input-field:focus {
+            border-color: #38bdf8;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.15);
+        }
+
+        /* Tombol Login */
+        .btn-login {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #38bdf8, #0284c7);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.2);
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(2, 132, 199, 0.35);
+            background: linear-gradient(135deg, #0ea5e9, #0369a1);
+        }
+
+        .btn-login:active {
+            transform: translateY(0);
+        }
+
+        /* Responsivitas untuk Layar Sangat Kecil (HP jadul/kecil) */
+        @media (max-width: 400px) {
+            .login-box {
+                padding: 30px 20px;
+            }
+            .login-box h2 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Box Login Mengambang -->
+    <div class="login-box">
+        
+        <!-- Lingkaran Atas dengan Efek Mengkilap -->
+        <div class="avatar-container">
+            <!-- Ikon User SVG Sederhana -->
+            <svg viewBox="0 0 24 24">
+                <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
+            </svg>
+        </div>
+
+        <h2>Selamat Datang</h2>
+        <p>Silakan masuk ke akun Pelatih atau Admin</p>
+
+        <!-- Form Input -->
+        <form id="loginForm">
+            <!-- Kolom Username -->
+            <div class="input-group">
+                <label for="username">Username Pelatih / Admin</label>
+                <input type="text" id="username" class="input-field" placeholder="Masukkan username Anda" required autocomplete="off">
+            </div>
+
+            <!-- Kolom Password -->
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" class="input-field" placeholder="••••••••" required>
+            </div>
+
+            <!-- Tombol Submit -->
+            <button type="submit" class="btn-login">Masuk Aplikasi</button>
+        </form>
+    </div>
+
+    <!-- JavaScript untuk Menangani Aksi Login -->
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            // Mencegah halaman melakukan reload saat tombol ditekan
+            event.preventDefault(); 
+
+            // Mengambil nilai input
+            const usernameInput = document.getElementById('username').value;
+            const passwordInput = document.getElementById('password').value;
+
+            // Logika validasi sederhana (Bisa disesuaikan atau dihubungkan ke database/API)
+            if (usernameInput.trim() === "" || passwordInput.trim() === "") {
+                alert("Harap isi semua kolom!");
+                return;
+            }
+
+            // Simulasi respon login sukses
+            alert("Login Berhasil!\nSelamat datang, " + usernameInput);
+            
+            // Di sini Anda bisa menambahkan kode redirect halaman, contoh:
+            // window.location.href = "dashboard.html";
+        });
+    </script>
+</body>
+</html>
