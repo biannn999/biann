@@ -1,1 +1,929 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Absensi Pelatih | IT Club Pesantren</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- =====================================================
+     DASHBOARD
+===================================================== -->
+
+<section id="dashboardPage" class="page active-page">
+
+    <div class="dashboard-overlay"></div>
+
+    <!-- NAVBAR -->
+    <header class="topbar">
+
+        <a href="#" class="brand">
+            <span class="brand-logo">IT</span>
+
+            <span class="brand-text">
+                <strong>IT Club</strong>
+                <small>Pesantren</small>
+            </span>
+        </a>
+
+        <button id="openLoginBtn" class="login-btn">
+            Login
+        </button>
+
+    </header>
+
+
+    <!-- CONTENT -->
+    <main class="dashboard-content">
+
+        <!-- HERO -->
+        <section class="hero">
+
+            <span class="eyebrow">
+                SISTEM INFORMASI EKSTRAKURIKULER
+            </span>
+
+            <h1>
+                Absensi Pelatih
+                <span>Olahraga</span>
+            </h1>
+
+            <p>
+                Sistem sederhana untuk membantu pencatatan kehadiran
+                pelatih ekstrakurikuler olahraga secara cepat dan praktis.
+            </p>
+
+        </section>
+
+
+        <!-- INFORMASI UTAMA -->
+        <section class="sport-summary reveal reveal-top">
+
+            <div>
+
+                <span class="summary-label">
+                    INFORMASI OLAHRAGA
+                </span>
+
+                <h2>
+                    Ekstrakurikuler Olahraga Pesantren
+                </h2>
+
+                <p>
+                    Pantau kehadiran pelatih dari berbagai cabang olahraga
+                    dalam satu sistem yang ringan dan mudah digunakan.
+                </p>
+
+            </div>
+
+            <div class="summary-number">
+
+                <strong>06</strong>
+
+                <span>
+                    Cabang
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- 6 CABANG OLAHRAGA -->
+        <section class="sport-grid">
+
+            <!-- SEPAK BOLA -->
+            <article
+                class="sport-card reveal reveal-left"
+                style="--delay:.1s"
+            >
+
+                <div class="diamond-img">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=500&q=80"
+                        alt="Sepak Bola"
+                    >
+
+                </div>
+
+                <div class="sport-info">
+
+                    <span>01</span>
+
+                    <h3>
+                        Sepak Bola
+                    </h3>
+
+                    <p>
+                        Pelatih & latihan sepak bola.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- BULU TANGKIS -->
+            <article
+                class="sport-card reveal reveal-right"
+                style="--delay:.18s"
+            >
+
+                <div class="diamond-img">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=500&q=80"
+                        alt="Bulu Tangkis"
+                    >
+
+                </div>
+
+                <div class="sport-info">
+
+                    <span>02</span>
+
+                    <h3>
+                        Bulu Tangkis
+                    </h3>
+
+                    <p>
+                        Pelatih & latihan badminton.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- VOLI -->
+            <article
+                class="sport-card reveal reveal-left"
+                style="--delay:.26s"
+            >
+
+                <div class="diamond-img">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=500&q=80"
+                        alt="Bola Voli"
+                    >
+
+                </div>
+
+                <div class="sport-info">
+
+                    <span>03</span>
+
+                    <h3>
+                        Bola Voli
+                    </h3>
+
+                    <p>
+                        Pelatih & latihan bola voli.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- BASKET -->
+            <article
+                class="sport-card reveal reveal-right"
+                style="--delay:.34s"
+            >
+
+                <div class="diamond-img">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=500&q=80"
+                        alt="Bola Basket"
+                    >
+
+                </div>
+
+                <div class="sport-info">
+
+                    <span>04</span>
+
+                    <h3>
+                        Bola Basket
+                    </h3>
+
+                    <p>
+                        Pelatih & latihan basket.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- FUTSAL -->
+            <article
+                class="sport-card reveal reveal-left"
+                style="--delay:.42s"
+            >
+
+                <div class="diamond-img">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=500&q=80"
+                        alt="Futsal"
+                    >
+
+                </div>
+
+                <div class="sport-info">
+
+                    <span>05</span>
+
+                    <h3>
+                        Futsal
+                    </h3>
+
+                    <p>
+                        Pelatih & latihan futsal.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- PENCAK SILAT -->
+            <article
+                class="sport-card reveal reveal-right"
+                style="--delay:.50s"
+            >
+
+                <div class="diamond-img">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&w=500&q=80"
+                        alt="Pencak Silat"
+                    >
+
+                </div>
+
+                <div class="sport-info">
+
+                    <span>06</span>
+
+                    <h3>
+                        Pencak Silat
+                    </h3>
+
+                    <p>
+                        Pelatih & latihan bela diri.
+                    </p>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- ATURAN -->
+        <section class="rules-box reveal reveal-bottom">
+
+            <span class="summary-label">
+                ATURAN PELATIH
+            </span>
+
+            <h2>
+                Ketentuan Kehadiran
+            </h2>
+
+            <ol>
+
+                <li>
+                    Pelatih melakukan absensi sesuai jadwal ekstrakurikuler.
+                </li>
+
+                <li>
+                    Absensi dilakukan setelah pelatih hadir di lokasi latihan.
+                </li>
+
+                <li>
+                    Data pada versi demo hanya dihitung selama halaman terbuka.
+                </li>
+
+                <li>
+                    Admin bertanggung jawab memeriksa data kehadiran.
+                </li>
+
+            </ol>
+
+        </section>
+
+    </main>
+
+
+    <footer class="footer">
+
+        <span>
+            © 2026 IT Club Pesantren
+        </span>
+
+        <span>
+            Simple • Fast • Practical
+        </span>
+
+    </footer>
+
+</section>
+
+
+
+<!-- =====================================================
+     LOGIN MODAL
+===================================================== -->
+
+<div
+    id="loginModal"
+    class="modal hidden"
+>
+
+    <div class="modal-backdrop"></div>
+
+
+    <div class="login-modal-card modal-slide">
+
+        <!-- CLOSE -->
+        <button
+            id="closeLoginBtn"
+            class="close-btn"
+        >
+            ×
+        </button>
+
+
+        <!-- LOGO -->
+        <div class="login-logo">
+            IT
+        </div>
+
+
+        <!-- INTRO -->
+        <div class="login-intro">
+
+            <span class="eyebrow">
+                PORTAL ABSENSI
+            </span>
+
+            <h2>
+                Selamat Datang
+            </h2>
+
+            <p>
+                Masuk untuk mengakses sistem absensi
+                pelatih ekstrakurikuler olahraga.
+            </p>
+
+        </div>
+
+
+        <!-- LOGIN COLUMNS -->
+        <div class="login-columns">
+
+
+            <!-- ADMIN -->
+            <form
+                id="adminLoginForm"
+                class="login-panel"
+            >
+
+                <div class="login-icon">
+                    A
+                </div>
+
+                <h3>
+                    Login Admin
+                </h3>
+
+                <p>
+                    Kelola dan pantau seluruh absensi pelatih.
+                </p>
+
+
+                <label>
+
+                    Username
+
+                    <input
+                        id="adminUsername"
+                        type="text"
+                        placeholder="admin"
+                        required
+                    >
+
+                </label>
+
+
+                <label>
+
+                    Password
+
+                    <input
+                        id="adminPassword"
+                        type="password"
+                        placeholder="admin123"
+                        required
+                    >
+
+                </label>
+
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                >
+                    Masuk sebagai Admin
+                </button>
+
+
+                <small class="demo-note">
+                    Demo: admin / admin123
+                </small>
+
+            </form>
+
+
+
+            <!-- PESERTA -->
+            <form
+                id="participantLoginForm"
+                class="login-panel"
+            >
+
+                <div class="login-icon">
+                    P
+                </div>
+
+                <h3>
+                    Login Peserta
+                </h3>
+
+                <p>
+                    Masuk ke halaman absensi berdasarkan cabang olahraga.
+                </p>
+
+
+                <label>
+
+                    Nama
+
+                    <input
+                        id="participantName"
+                        type="text"
+                        placeholder="Nama peserta"
+                        required
+                    >
+
+                </label>
+
+
+                <label>
+
+                    Cabang Olahraga
+
+                    <select
+                        id="participantSport"
+                        required
+                    >
+
+                        <option value="">
+                            Pilih cabang
+                        </option>
+
+                        <option>
+                            Sepak Bola
+                        </option>
+
+                        <option>
+                            Bulu Tangkis
+                        </option>
+
+                        <option>
+                            Bola Voli
+                        </option>
+
+                        <option>
+                            Bola Basket
+                        </option>
+
+                        <option>
+                            Futsal
+                        </option>
+
+                        <option>
+                            Pencak Silat
+                        </option>
+
+                    </select>
+
+                </label>
+
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                >
+                    Masuk sebagai Peserta
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- PROFIL -->
+        <p class="profile-note">
+
+            <strong>Tentang sistem:</strong>
+
+            Proyek IT Club untuk latihan pembuatan
+            aplikasi web absensi sederhana tanpa database.
+
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     HALAMAN UTAMA ABSENSI
+===================================================== -->
+
+<section
+    id="appPage"
+    class="page app-page"
+>
+
+    <!-- HEADER -->
+    <header class="app-header">
+
+        <div class="app-brand">
+
+            <span class="brand-logo">
+                IT
+            </span>
+
+            <div>
+
+                <strong>
+                    Absensi Pelatih
+                </strong>
+
+                <small id="sessionRole">
+                    Panel Sistem
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="header-actions">
+
+            <span
+                id="welcomeUser"
+                class="welcome-user"
+            ></span>
+
+            <button
+                id="logoutBtn"
+                class="outline-btn"
+            >
+                Keluar
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- MAIN -->
+    <main class="app-main">
+
+
+        <!-- TITLE -->
+        <section class="app-title reveal reveal-right">
+
+            <span class="eyebrow dark-eyebrow">
+                DASHBOARD ABSENSI
+            </span>
+
+            <h1>
+
+                Panel
+
+                <span id="panelTitle">
+                    Absensi
+                </span>
+
+            </h1>
+
+            <p>
+                Hitung cepat kehadiran selama sesi halaman ini berlangsung.
+            </p>
+
+        </section>
+
+
+
+        <!-- STATISTIK -->
+        <section class="stats-grid">
+
+
+            <article
+                class="app-card stat-card reveal reveal-right"
+            >
+
+                <span>
+                    Total Hadir
+                </span>
+
+                <strong id="totalPresent">
+                    0
+                </strong>
+
+                <small>
+                    Kehadiran tercatat
+                </small>
+
+            </article>
+
+
+
+            <article
+                class="app-card stat-card reveal reveal-right"
+                style="--delay:.08s"
+            >
+
+                <span>
+                    Total Tidak Hadir
+                </span>
+
+                <strong id="totalAbsent">
+                    0
+                </strong>
+
+                <small>
+                    Ketidakhadiran tercatat
+                </small>
+
+            </article>
+
+
+
+            <article
+                class="app-card stat-card reveal reveal-right"
+                style="--delay:.16s"
+            >
+
+                <span>
+                    Persentase
+                </span>
+
+                <strong id="attendancePercent">
+                    0%
+                </strong>
+
+                <small>
+                    Dari seluruh input
+                </small>
+
+            </article>
+
+
+
+            <article
+                class="app-card stat-card"
+            >
+
+                <span>
+                    Cabang Aktif
+                </span>
+
+                <strong>
+                    6
+                </strong>
+
+                <small>
+                    Ekstrakurikuler olahraga
+                </small>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- ABSENSI + GRAFIK -->
+        <section class="attendance-layout">
+
+
+            <!-- FORM ABSENSI -->
+            <div
+                class="app-card attendance-card reveal reveal-right"
+            >
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="summary-label">
+                            PENGINPUTAN ABSENSI
+                        </span>
+
+                        <h2 id="attendanceHeading">
+                            Absensi Pelatih
+                        </h2>
+
+                    </div>
+
+
+                    <span class="live-badge">
+                        HITUNG CEPAT
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="attendanceFormContainer"
+                    class="attendance-list"
+                ></div>
+
+            </div>
+
+
+
+            <!-- GRAFIK -->
+            <div
+                class="app-card chart-card reveal reveal-right"
+            >
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="summary-label">
+                            DIAGRAM KEHADIRAN
+                        </span>
+
+                        <h2>
+                            Rekap Cepat
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chart-wrap">
+
+                    <div
+                        class="donut"
+                        id="donutChart"
+                    >
+
+                        <div class="donut-center">
+
+                            <strong id="chartPercent">
+                                0%
+                            </strong>
+
+                            <span>
+                                Hadir
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chart-legend">
+
+                    <div>
+
+                        <i class="legend-dot present"></i>
+
+                        Hadir
+
+                        <strong id="legendPresent">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <i class="legend-dot absent"></i>
+
+                        Tidak Hadir
+
+                        <strong id="legendAbsent">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- INFO -->
+        <section
+            class="app-card info-card reveal reveal-right"
+        >
+
+            <span class="summary-label">
+                CATATAN SISTEM
+            </span>
+
+            <h2>
+                Mode Hitung Cepat
+            </h2>
+
+            <p>
+                Data pada demo ini tidak disimpan ke database
+                maupun local storage. Jika halaman di-refresh,
+                perhitungan akan kembali ke nol.
+            </p>
+
+        </section>
+
+    </main>
+
+</section>
+
+
+
+<!-- =====================================================
+     MODAL KONFIRMASI
+===================================================== -->
+
+<div
+    id="confirmationModal"
+    class="modal hidden"
+>
+
+    <div class="modal-backdrop"></div>
+
+
+    <div class="confirmation-card modal-slide">
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <span class="eyebrow dark-eyebrow">
+            KONFIRMASI
+        </span>
+
+        <h2 id="confirmationTitle">
+            Absensi berhasil
+        </h2>
+
+        <p id="confirmationMessage">
+            Data berhasil dihitung.
+        </p>
+
+        <button
+            id="confirmationCloseBtn"
+            class="primary-btn"
+        >
+            Lanjutkan
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- JAVASCRIPT -->
+<script src="script.js"></script>
+
+</body>
+</html>
