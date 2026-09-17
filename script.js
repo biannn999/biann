@@ -11,32 +11,32 @@
 const coaches = [
 
     {
-        name: "Ahmad Fauzan",
-        sport: "Sepak Bola"
+        name: "Pelatih archery",
+        sport: "Archery"
     },
 
     {
-        name: "Rizky Maulana",
-        sport: "Bulu Tangkis"
+        name: "Pelatih badminton",
+        sport: "Badminton"
     },
 
     {
-        name: "Fajar Hidayat",
+        name: "Pelatih voli",
         sport: "Bola Voli"
     },
 
     {
-        name: "Dimas Pratama",
+        name: "Pelatih basket",
         sport: "Bola Basket"
     },
 
     {
-        name: "Ilham Ramadhan",
+        name: "Pelatih futsal",
         sport: "Futsal"
     },
 
     {
-        name: "Arif Setiawan",
+        name: "Pelatih silat",
         sport: "Pencak Silat"
     }
 
