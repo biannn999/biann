@@ -426,8 +426,6 @@ function handleAdminLogin(event) {
 
             }
     );
-   
-       sessionStorage.setItem("isLoggedIn", "true"); 
 
     }
 
