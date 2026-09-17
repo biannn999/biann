@@ -6,13 +6,6 @@
 
     <title>Absensi Pelatih | IT Club Pesantren Daarul Uluum Lido</title>
     
-    <script>
-        if (sessionStorage.getItem("isLoggedIn") !== "true") {
-            alert("Akses ditolak! Silakan login terlebih dahulu.");
-            window.location.href = "../index.html"; // Arahkan kembali ke halaman login utama
-        }
-    </script>
-   
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -615,6 +608,13 @@
                 Keluar
             </button>
 
+            <script>
+        if (sessionStorage.getItem("isLoggedIn") !== "true") {
+            alert("Akses ditolak! Silakan login terlebih dahulu.");
+            window.location.href = "../index.html"; // Arahkan kembali ke halaman login utama
+        }
+    </script>
+            
         </div>
 
     </header>
