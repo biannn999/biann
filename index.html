@@ -5,7 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Absensi Pelatih | IT Club Pesantren Daarul Uluum Lido</title>
-
+    
+    <script>
+        if (sessionStorage.getItem("isLoggedIn") !== "true") {
+            alert("Akses ditolak! Silakan login terlebih dahulu.");
+            window.location.href = "../index.html"; // Arahkan kembali ke halaman login utama
+        }
+    </script>
+   
     <link rel="stylesheet" href="style.css">
 </head>
 
